@@ -1,21 +1,21 @@
 var db = require("../models");
 
-module.exports = function (app) {
+module.exports = function(app) {
   /////////// Routes for CLIENTS ///////////
   // Client login
-  app.get("/api/client/:id", function (req, res) {
+  app.get("/api/client/:id", function(req, res) {
     db.client
       .findOne({
         where: {
           username: req.params.id
         }
       })
-      .then(function (dbClient) {
+      .then(function(dbClient) {
         res.json(dbClient);
       });
   });
 
-  app.get("/api/favorites/:id", function (req, res) {
+  app.get("/api/favorites/:id", function(req, res) {
     db.favorite
       .findAll({
         include: [db.property],
@@ -23,13 +23,13 @@ module.exports = function (app) {
           clientId: req.params.id
         }
       })
-      .then(function (dbClient) {
+      .then(function(dbClient) {
         res.json(dbClient);
       });
   });
 
   // Updating existing client based on clientId
-  app.post("/api/client/:id", function (req, res) {
+  app.post("/api/client/:id", function(req, res) {
     var clientId = req.body.clientId;
 
     db.client
@@ -48,7 +48,7 @@ module.exports = function (app) {
           }
         }
       )
-      .then(function () {
+      .then(function() {
         res.json(clientId);
       });
   });
@@ -56,20 +56,20 @@ module.exports = function (app) {
   /////////// Routes for OWNERS ///////////
 
   // Owner login
-  app.get("/api/owner/:username", function (req, res) {
+  app.get("/api/owner/:username", function(req, res) {
     db.owner
       .findOne({
         where: {
           username: req.params.username
         }
       })
-      .then(function (dbOwner) {
+      .then(function(dbOwner) {
         res.json(dbOwner);
       });
   });
 
   // Updating existing owner based on ownerId
-  app.post("/api/owner/:id", function (req, res) {
+  app.post("/api/owner/:id", function(req, res) {
     var ownerId = req.body.ownerId;
 
     db.owner
@@ -93,20 +93,20 @@ module.exports = function (app) {
           }
         }
       )
-      .then(function () {
+      .then(function() {
         res.json(ownerId);
       });
   });
 
   // Delete existing owner based on propertyId
-  app.delete("/api/owner/:id", function (req, res) {
+  app.delete("/api/owner/:id", function(req, res) {
     db.owner
       .destroy({
         where: {
           id: req.params.id
         }
       })
-      .then(function (data) {
+      .then(function(data) {
         res.json(data);
       });
   });
@@ -114,7 +114,7 @@ module.exports = function (app) {
   /////////// Routes for PROPERTIES ///////////
 
   // Adding a new property
-  app.post("/api/property", function (req, res) {
+  app.post("/api/property", function(req, res) {
     db.property
       .create({
         info: req.body.info,
@@ -132,13 +132,13 @@ module.exports = function (app) {
         photo: req.body.photo,
         ownerId: req.body.ownerId
       })
-      .then(function (dbProperty) {
+      .then(function(dbProperty) {
         res.json(dbProperty);
       });
   });
 
   // Updating existing property based on propertyId
-  app.post("/api/property/:id", function (req, res) {
+  app.post("/api/property/:id", function(req, res) {
     var ownerId = req.body.ownerId;
 
     db.property
@@ -164,26 +164,26 @@ module.exports = function (app) {
           }
         }
       )
-      .then(function () {
+      .then(function() {
         res.json(ownerId);
       });
   });
 
   // Delete existing property based on propertyId
-  app.delete("/api/property/:id", function (req, res) {
+  app.delete("/api/property/:id", function(req, res) {
     db.property
       .destroy({
         where: {
           id: req.params.id
         }
       })
-      .then(function (data) {
+      .then(function(data) {
         res.json(data);
       });
   });
 
   /////////// Routes for FAVORITES ///////////
-  app.delete("/api/favorites/:ids", function (req, res) {
+  app.delete("/api/favorites/:ids", function(req, res) {
     var clientId = req.params.id.split("and")[0];
     var propertyId = req.params.id.split("and")[1];
     db.favorites
@@ -194,11 +194,10 @@ module.exports = function (app) {
 
             clientId: clientId
           }
-        },
+        }
       })
-      .then(function (data) {
+      .then(function(data) {
         res.json(data);
       });
   });
 };
-
