@@ -65,3 +65,9 @@ The project is based on **node.js** and **express.js**. The back end is backed b
 *Property edit page - Web*
 ![10](./other/web_editProperty.png)
 
+
+>## QUESTIONS OR COMMENTS
+- Feel free to contact the developers:
+    - Tony Green @ <anthony.green.creative@gmail.com>!
+    - Juan I Diaz @ <jdi@idiaz.ca>!
+- See the **depolyed** project [live](https://idiaz-propertypal.herokuapp.com)
