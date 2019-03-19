@@ -1,2 +1,0 @@
-DROP DATABASE IF EXISTS propertydb;
-CREATE DATABASE propertydb;
