@@ -1,6 +1,6 @@
 # PropertyPal
 ## Real Estate solution for direct selling Owner-Client ##
-![FLIP.IMG](.\public\images\property-pal-logo-horiz-blk.png)
+![FLIP.IMG](./public/images/property-pal-logo-horiz-blk.png)
 
 See the project [live](https://idiaz-propertypal.herokuapp.com)!
 
